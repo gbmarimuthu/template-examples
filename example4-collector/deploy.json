@@ -7,7 +7,7 @@
         }
     },
     "variables": {
-        "collectorTemplateUri": "[uri(deployment().properties.templateLink.uri, 'collector.template.json')]"
+        "collectorTemplateUri": "https://raw.githubusercontent.com/gbmarimuthu/template-examples/master/example4-collector/collector.template.json"
     },
     "resources": [
         {
@@ -25,7 +25,7 @@
                         "value": "[parameters('networkSecurityGroupsSettings').securityRules]"
                     },
                     "transformTemplateUri": {
-                        "value": "[uri(deployment().properties.templateLink.uri, 'transform.json')]"
+                        "value": "[uri('https://raw.githubusercontent.com/gbmarimuthu/template-examples/master/example4-collector/', 'transform.json')]"
                     }
                 }
             }
@@ -44,6 +44,10 @@
         "instance": {
             "type": "array",
             "value": "[reference('collector').outputs.result.value]"
+        }
+        "subscriptionOutput": {
+          "type": "Object",
+          "value": "[deployment()]"
         }
     }
 }
